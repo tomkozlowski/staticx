@@ -22,7 +22,8 @@ class build_bootloader(Command):
         pass
 
     def run(self):
-        check_call(['scons'])
+        cc = os.environ.get('BOOTLOADER_CC')
+        check_call(['scons', 'CC={}'.format(cc)])
 
 
 class build_hook(build):
